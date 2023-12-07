@@ -4,12 +4,20 @@ const path = require("path");
 const handlebarsSetup = require("./setup/handlebars-setup");
 const sessionSetup = require("./setup/session-setup");
 const routes = require("./routes/routes");
-const { connectToDatabase } = require("./database/database");
+const {
+  connectToDatabase,
+  initializeRestaurantModel,
+} = require("./database/database");
 
 const app = express();
 
 // Connect to the database
-connectToDatabase();
+connectToDatabase()
+  .then(() => {
+    // Initialize the Restaurant model
+    initializeRestaurantModel();
+  })
+  .catch((err) => console.log(err));
 
 // All the middlewares
 app.use(helmet());

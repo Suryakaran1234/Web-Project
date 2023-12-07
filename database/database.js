@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const { seedDatabase } = require("../models/seed.js");
+const { restaurantSchema } = require("../models/Restaurant");
 
 dotenv.config();
 
@@ -19,5 +20,10 @@ async function connectToDatabase() {
     console.error("Error connecting to the database:", error);
   }
 }
+async function initializeRestaurantModel() {
+  // Initialize the "Restaurant" model with the "restaurant" collection
+  console.log("Initializing Restaurant model");
+  mongoose.model("Restaurant", restaurantSchema);
+}
 
-module.exports = { connectToDatabase };
+module.exports = { connectToDatabase, initializeRestaurantModel };
