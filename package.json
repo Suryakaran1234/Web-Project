@@ -4,7 +4,8 @@
   "description": "Web Programming and Framework 1 - Final Project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Surya Karan Sharma and Nish Kamli",
   "license": "ISC",
