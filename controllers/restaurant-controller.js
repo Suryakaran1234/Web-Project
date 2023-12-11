@@ -18,17 +18,21 @@ async function getAllRestaurants(page, perPage, borough) {
     page = page || 1;
     perPage = perPage || 10;
 
+    // Parse numeric values
+    const pageNumber = parseInt(page, 10);
+    const perPageNumber = parseInt(perPage, 10);
+
     // Define query conditions based on optional borough parameter
     const query = borough ? { borough } : {};
 
     // Calculate the skip value based on the provided page and perPage values
-    const skip = (page - 1) * perPage;
+    const skip = (pageNumber - 1) * perPageNumber;
 
     // Fetch restaurants based on paging, sorting, and optional borough filter
     const restaurants = await Restaurant.find(query)
       .skip(skip)
-      .limit(perPage)
-      .sort({ restaurant_id: 1 });
+      .limit(perPageNumber)
+      .sort({ restaurant_id: 1 }).lean();
 
     return restaurants;
   } catch (error) {
@@ -37,9 +41,10 @@ async function getAllRestaurants(page, perPage, borough) {
   }
 }
 
+
 async function getRestaurantById(Id) {
   try {
-    const restaurant = await Restaurant.findById(Id);
+    const restaurant = await Restaurant.findById(Id).lean();
     if (!restaurant) {
       console.log(`Restaurant with ID ${Id} not found`);
       return null;

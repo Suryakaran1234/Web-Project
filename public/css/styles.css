@@ -1,23 +1,215 @@
 /* Add your styles here */
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
 }
 
 .form-container {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
 .error {
-    color: red;
+  color: red;
+}
+
+
+.restaurant-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.restaurant-card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+}
+/* .restaurant-card {
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+} */
+
+.restaurant-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.restaurant-details-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.restaurant-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-details-header h1 {
+  color: #3498db;
+  margin: 0;
+}
+
+.add-button {
+  margin: 0 auto !important;
+}
+
+.edit-button,
+.delete-button,
+.go-back-button,
+.view-button, .add-button {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button{
+  background-color: #27ae60;
+}
+
+.delete-button, .add-button {
+  background-color: #e74c3c;
+}
+
+.go-back-button, .view-button {
+  background-color: #3498db;
+}
+
+.edit-button:hover,
+.delete-button:hover,
+.go-back-button:hover,
+.view-button:hover, .add-button:hover {
+  background-color: #333;
+}
+
+.restaurant-details-content {
+  margin-top: 20px;
+}
+
+.restaurant-info {
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.info-label {
+  font-weight: bold;
+  width: 100px;
+}
+
+.grades {
+  border-top: 2px solid #ddd;
+  padding-top: 20px;
+}
+
+.grades-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.grade-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.grade-label {
+  font-weight: bold;
+  width: 100px;
+}
+
+.grade-value {
+  margin-left: 10px;
+}
+
+/* Style the scrollbar */
+/* Firefox */
+.restaurant-card {
+    scrollbar-width: none;
+    scrollbar-color: #25b7cb #ffffff;
+}
+
+/* Other browsers */
+.restaurant-card::-webkit-scrollbar{
+    width: 10px;
+}
+
+.restaurant-card::-webkit-scrollbar-track{
+    background: #ffffff;
+}
+
+.restaurant-card::-webkit-scrollbar-thumb{
+    background-color: #25b7cb;
+    border-radius: 20px;
+    border: 3px solid #FFFFFF;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.action-buttons > a, button {
+  margin: auto;
+  margin-left: 10px;
+}
+
+.show-restaurant {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Style for the form */
+form {
+  margin-top: 20px;
+}
+
+label {
+  margin-right: 5px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+button,
+a {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
 }

@@ -1,0 +1,57 @@
+<!-- restaurantCard.hbs -->
+<div class="restaurant-container">
+    <div class="restaurant-card">
+        <div class="restaurant-header">
+            <h2>{{name}}</h2>
+        </div>
+        <div class="restaurant-info">
+            <div class="info-item">
+                <span class="info-label">Cuisine:</span>
+                <span class="info-value">{{cuisine}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Borough:</span>
+                <span class="info-value">{{borough}}</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Address:</span>
+                <span class="info-value">
+                    {{address.building}} {{address.street}},
+                    {{borough}}, NY {{address.zipcode}}
+                </span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Coordinates:</span>
+                <span class="info-value">
+                    Latitude: {{address.coord.[1]}}, Longitude: {{address.coord.[0]}}
+                </span>
+            </div>
+        </div>
+
+        <div class="grades">
+            {{#each grades}}
+            <div class="grade-item">
+                <span class="grade-label">Grade:</span>
+                <span class="grade-value">{{this.grade}}</span>
+            </div>
+            <div class="grade-item">
+                <span class="grade-label">Score:</span>
+                <span class="grade-value">{{this.score}}</span>
+            </div>
+            <div class="grade-item">
+                <span class="grade-label">Date:</span>
+                <span class="grade-value">{{formatDate this.date}}</span>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="action-buttons">
+            <a href="/api/restaurants/{{_id}}" class="action-button view-button">View</a>
+            <a href="/api/restaurants/{{_id}}" class="action-button edit-button">Edit</a>
+            <a href="/api/restaurants/{{_id}}" class="action-button delete-button">Delete</a>
+        </div>
+    </div>
+</div>

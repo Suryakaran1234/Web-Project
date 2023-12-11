@@ -1,0 +1,35 @@
+<!-- views/restaurants/create.hbs -->
+{{!< layouts/main}} <h1>Create Restaurant</h1>
+
+    <div class="form-container">
+        <form action="/api/restaurants" method="POST" class="form">
+            <!-- Restaurant Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <!-- Cuisine -->
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine" required>
+            <!-- Borough -->
+            <label for="borough">Borough:</label>
+            <input type="text" id="borough" name="borough" required>
+            <!-- Address Building -->
+            <label for="building">Building:</label>
+            <input type="text" id="building" name="address.building" required>
+            <!-- Address Street -->
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="address.street" required>
+            <!-- Address Zipcode -->
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" id="zipcode" name="address.zipcode" required>
+            <!-- Coordinates -->
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="address.coord[1]" value="{{address.coord.[1]}}" readonly>
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="address.coord[0]" value="{{address.coord.[0]}}" readonly>
+            <!-- Additional Fields (e.g., Grades, Date, Grade, Score) -->
+            
+            <button type="submit">Create Restaurant</button>
+        </form>
+    </div>
+
+    <a href="/api/restaurants">Go Back</a>

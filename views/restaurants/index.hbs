@@ -1,0 +1,18 @@
+<!-- views/restaurants/index.hbs -->
+{{!< layouts/main}} <!-- Display the list of restaurants here -->
+    <h1>Restaurant List</h1>
+
+    <div class="action-buttons">
+        <a href="/api/restaurants/add" class="add-button">Add New Restaurant</a>
+    </div>
+
+    <div class="restaurant-list">
+        {{#if restaurants.length}}
+        <!-- Iterate over restaurants and include the restaurant card partial -->
+        {{#each restaurants}}
+        {{> restaurantCard}}
+        {{/each}}
+        {{else}}
+        <p>No restaurants found.</p>
+        {{/if}}
+    </div>

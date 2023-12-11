@@ -1,0 +1,49 @@
+<!-- views/restaurants/show.hbs -->
+{{!< layouts/main}} <div class="restaurant-details-container">
+    <div class="restaurant-details-header">
+        <h1>{{restaurant.name}}</h1>
+        <div class="action-buttons">
+            <a href="/api/restaurants/{{restaurant._id}}" class="edit-button">Edit</a>
+            <a href="/api/restaurants/{{restaurant._id}}" class="delete-button">Delete</a>
+            <a href="/api/restaurants" class="go-back-button">Go Back</a>
+        </div>
+    </div>
+
+    <div class="restaurant-details-content">
+        <div class="restaurant-info">
+            <div class="info-item">
+                <div class="info-label">Cuisine:</div>
+                <div class="info-value">{{restaurant.cuisine}}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Borough:</div>
+                <div class="info-value">{{restaurant.borough}}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Address:</div>
+                <div class="info-value">
+                    {{restaurant.address.building}} {{restaurant.address.street}}, {{restaurant.borough}}, NY
+                    {{restaurant.address.zipcode}}
+                </div>
+            </div>
+        </div>
+
+        <div class="grades">
+            <div class="grades-header">Grades</div>
+            {{#each restaurant.grades}}
+            <div class="grade-item">
+                <div class="grade-label">Grade:</div>
+                <div class="grade-value">{{this.grade}}</div>
+            </div>
+            <div class="grade-item">
+                <div class="grade-label">Score:</div>
+                <div class="grade-value">{{this.score}}</div>
+            </div>
+            <div class="grade-item">
+                <div class="grade-label">Date:</div>
+                <div class="grade-value">{{formatDate this.date}}</div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    </div>

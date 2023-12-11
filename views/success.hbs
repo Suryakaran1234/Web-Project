@@ -1,0 +1,10 @@
+{{!< layouts/main}} <h2>{{messages}}!</h2>
+
+    {{#if deletedRestaurant}}
+    {{> restaurantCard}}
+    {{/if}}
+
+    {{#if createdRestaurant}}
+    {{> restaurantCard}}
+    {{/if}}
+    <a href="/restaurants/index">Go Back</a>

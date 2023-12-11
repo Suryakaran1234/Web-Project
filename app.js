@@ -8,6 +8,7 @@ const {
   connectToDatabase,
   initializeRestaurantModel,
 } = require("./database/database");
+const bodyParser = require("body-parser");
 
 const app = express();
 
@@ -24,6 +25,9 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+// Middleware to parse form data
+app.use(bodyParser.urlencoded({ extended: true }));
 
 handlebarsSetup.setup(app);
 sessionSetup.setup(app);

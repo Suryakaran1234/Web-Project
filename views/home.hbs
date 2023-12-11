@@ -1,2 +1,17 @@
-<h2>Welcome, {{username}}!</h2>
+<h2>Welcome to the Restaurant App, {{username}}!</h2>
+
+<!-- Form for input parameters -->
+<form action="/api/restaurants" method="get">
+    <label for="page">Page:</label>
+    <input type="number" name="page" value="{{page}}" required>
+
+    <label for="perPage">Per Page:</label>
+    <input type="number" name="perPage" value="{{perPage}}" required>
+
+    <label for="borough">Borough:</label>
+    <input type="text" name="borough" value="{{borough}}">
+
+    <button type="submit">Submit</button>
+</form>
+
 <a href="/logout">Logout</a>
