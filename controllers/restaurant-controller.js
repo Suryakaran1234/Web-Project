@@ -5,13 +5,12 @@ async function addNewRestaurant(data) {
     const newRestaurant = new Restaurant(data);
     await newRestaurant.save();
     console.log("New restaurant added:", newRestaurant);
-    return newRestaurant;
+    return newRestaurant.toObject();
   } catch (error) {
     console.error("Error adding new restaurant:", error);
     throw error;
   }
 }
-
 async function getAllRestaurants(page, perPage, borough) {
   try {
     // Set default values if not provided
@@ -28,19 +27,44 @@ async function getAllRestaurants(page, perPage, borough) {
     // Calculate the skip value based on the provided page and perPage values
     const skip = (pageNumber - 1) * perPageNumber;
 
+    // Fetch total count for pagination
+    const totalCount = await Restaurant.countDocuments(query);
+
     // Fetch restaurants based on paging, sorting, and optional borough filter
     const restaurants = await Restaurant.find(query)
       .skip(skip)
       .limit(perPageNumber)
-      .sort({ restaurant_id: 1 }).lean();
+      .sort({ restaurant_id: 1 })
+      .lean();
 
-    return restaurants;
+    // Calculate pagination information
+    const totalPages = Math.ceil(totalCount / perPageNumber);
+    const hasPrev = pageNumber > 1;
+    const hasNext = pageNumber < totalPages;
+    const prevPage = hasPrev ? pageNumber - 1 : null;
+    const nextPage = hasNext ? pageNumber + 1 : null;
+
+    console.log({
+      restaurants,
+      totalPages,
+      hasPrev,
+      hasNext,
+      prevPage,
+      nextPage,
+    });
+    return {
+      restaurants,
+      totalPages,
+      hasPrev,
+      hasNext,
+      prevPage,
+      nextPage,
+    };
   } catch (error) {
     console.error("Error fetching all restaurants:", error);
     throw error;
   }
 }
-
 
 async function getRestaurantById(Id) {
   try {
@@ -59,9 +83,10 @@ async function getRestaurantById(Id) {
 
 async function updateRestaurantById(data, Id) {
   try {
+    console.log(Id);
     const updatedRestaurant = await Restaurant.findByIdAndUpdate(Id, data, {
       new: true,
-    });
+    }).lean();
     if (!updatedRestaurant) {
       console.log(`Restaurant with ID ${Id} not found`);
       return null;
@@ -76,7 +101,7 @@ async function updateRestaurantById(data, Id) {
 
 async function deleteRestaurantById(Id) {
   try {
-    const deletedRestaurant = await Restaurant.findByIdAndDelete(Id);
+    const deletedRestaurant = await Restaurant.findByIdAndDelete(Id).lean();
     if (!deletedRestaurant) {
       console.log(`Restaurant with ID ${Id} not found`);
       return null;

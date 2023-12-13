@@ -1,10 +1,107 @@
-{{!< layouts/main}} <h2>{{messages}}!</h2>
+<h2>{{message}}!</h2>
+{{!--
+<div class="action-buttons">
+    <a href="/api/restaurants" class="go-back-button">Go Back</a>
+</div> --}}
 
-    {{#if deletedRestaurant}}
-    {{> restaurantCard}}
-    {{/if}}
+{{#if deletedRestaurant}}
+<div class="restaurant-details-container">
+    <div class="restaurant-details-header">
+        <h1>{{deletedRestaurant.name}}</h1>
+        <div class="action-buttons">
+            <a href="/api/restaurants" class="go-back-button">Go Back</a>
+        </div>
+    </div>
 
-    {{#if createdRestaurant}}
-    {{> restaurantCard}}
-    {{/if}}
-    <a href="/restaurants/index">Go Back</a>
+    <div class="restaurant-details-content">
+        <div class="restaurant-info">
+            <div class="info-item">
+                <div class="info-label">Cuisine:</div>
+                <div class="info-value">{{deletedRestaurant.cuisine}}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Borough:</div>
+                <div class="info-value">{{deletedRestaurant.borough}}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Address:</div>
+                <div class="info-value">
+                    {{deletedRestaurant.address.building}}
+                    {{deletedRestaurant.address.street}},
+                    {{deletedRestaurant.borough}}, NY
+                    {{deletedRestaurant.address.zipcode}}
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-section">
+            <h3 class="section-title">Customer Reviews</h3>
+            <div class="reviews-list">
+                {{#each deletedRestaurant.grades}}
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-label">Grade:</span>
+                        <span class="review-value">{{this.grade}}</span>
+                    </div>
+                    <div class="review-content">
+                        <p class="score-label">Score: {{this.score}}</p>
+                        <p class="date-label">Date: {{formatDate this.date}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+{{#if createdRestaurant}}
+<div class="restaurant-details-container">
+    <div class="restaurant-details-header">
+        <h1>{{createdRestaurant.name}}</h1>
+        <div class="action-buttons">
+            <a href="/api/restaurants" class="go-back-button">Go Back</a>
+        </div>
+    </div>
+
+    <div class="restaurant-details-content">
+        <div class="restaurant-info">
+            <div class="info-item">
+                <div class="info-label">Cuisine:</div>
+                <div class="info-value">{{createdRestaurant.cuisine}}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Borough:</div>
+                <div class="info-value">{{createdRestaurant.borough}}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Address:</div>
+                <div class="info-value">
+                    {{createdRestaurant.address.building}}
+                    {{createdRestaurant.address.street}},
+                    {{createdRestaurant.borough}}, NY
+                    {{createdRestaurant.address.zipcode}}
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-section">
+            <h3 class="section-title">Customer Reviews</h3>
+            <div class="reviews-list">
+                {{#each createdRestaurant.grades}}
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-label">Grade:</span>
+                        <span class="review-value">{{this.grade}}</span>
+                    </div>
+                    <div class="review-content">
+                        <p class="score-label">Score: {{this.score}}</p>
+                        <p class="date-label">Date: {{formatDate this.date}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

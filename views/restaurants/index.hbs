@@ -1,6 +1,5 @@
 <!-- views/restaurants/index.hbs -->
-{{!< layouts/main}} <!-- Display the list of restaurants here -->
-    <h1>Restaurant List</h1>
+<h1>Restaurant List</h1>
 
     <div class="action-buttons">
         <a href="/api/restaurants/add" class="add-button">Add New Restaurant</a>
@@ -12,6 +11,19 @@
         {{#each restaurants}}
         {{> restaurantCard}}
         {{/each}}
+
+        <!-- Pagination Controls -->
+        <div class="action-buttons">
+            <div class="pagination">
+                {{#if hasPrev}}
+                <a href="/api/restaurants?page={{prevPage}}&perPage={{perPageNumber}}" class="edit-button">Previous</a>
+                {{/if}}
+
+                {{#if hasNext}}
+                <a href="/api/restaurants?page={{nextPage}}&perPage={{perPageNumber}}" class="edit-button">Next</a>
+                {{/if}}
+            </div>
+        </div>
         {{else}}
         <p>No restaurants found.</p>
         {{/if}}

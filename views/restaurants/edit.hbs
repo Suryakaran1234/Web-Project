@@ -1,3 +1,69 @@
 <!-- views/restaurants/edit.hbs -->
-{{!< layouts/main}} <h1>Edit Restaurant</h1>
-    <!-- Edit form for the restaurant goes here -->
+{{!< layouts/main}} <h1>Edit Restaurant: {{restaurant.name}}</h1>
+
+    <div class="form-container">
+        <form action="/api/restaurants/{{restaurant._id}}" method="POST" class="form">
+            <input type="hidden" name="_method" value="PUT">
+
+            <!-- Restaurant Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{restaurant.name}}" required>
+
+            <!-- Cuisine -->
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine" value="{{restaurant.cuisine}}" required>
+
+            <!-- Borough -->
+            <label for="borough">Borough:</label>
+            <input type="text" id="borough" name="borough" value="{{restaurant.borough}}" required>
+
+            <!-- Address -->
+            <label for="building">Building:</label>
+            <input type="text" id="building" name="building" value="{{restaurant.address.building}}" required>
+
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" value="{{restaurant.address.street}}" required>
+
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" id="zipcode" name="zipcode" value="{{restaurant.address.zipcode}}" required>
+
+            <!-- Coordinates -->
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" value="{{restaurant.address.coord.[1]}}" required>
+
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" value="{{restaurant.address.coord.[0]}}" required>
+
+            <!-- Grades -->
+            <div class="reviews-section">
+                <h3 class="section-title">Customer Reviews</h3>
+                <div class="reviews-list">
+                    {{#each restaurant.grades as |grade index|}}
+                    <div class="review-item">
+                        <div class="review-header">
+                            <label for="grade_{{index}}" class="review-label">Grade:</label>
+                            <input type="text" id="grade_{{index}}" name="grades[{{index}}][grade]" class="review-value"
+                                value="{{grade.grade}}" required>
+                        </div>
+                        <div class="review-content">
+                            <label for="score_{{index}}" class="score-label">Score:</label>
+                            <input type="text" id="score_{{index}}" name="grades[{{index}}][score]"
+                                value="{{grade.score}}" required>
+                            <label for="date_{{index}}" class="date-label">Date:</label>
+                            <input type="text" id="date_{{index}}" name="grades[{{index}}][date]" class="date-label"
+                                value="{{formatDate grade.date}}" required>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="edit-button">Save Changes</button>
+                <a href="/api/restaurants" class="view-button">Go Back</a>
+                <a href="/logout" class="delete-button">Logout</a>
+            </div>
+        </form>
+    </div>

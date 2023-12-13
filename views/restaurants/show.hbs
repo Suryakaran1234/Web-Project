@@ -1,10 +1,15 @@
 <!-- views/restaurants/show.hbs -->
-{{!< layouts/main}} <div class="restaurant-details-container">
+<div class="restaurant-details-container">
     <div class="restaurant-details-header">
         <h1>{{restaurant.name}}</h1>
         <div class="action-buttons">
-            <a href="/api/restaurants/{{restaurant._id}}" class="edit-button">Edit</a>
-            <a href="/api/restaurants/{{restaurant._id}}" class="delete-button">Delete</a>
+            <a href="/api/restaurants/edit/{{restaurant._id}}" class="edit-button">Edit</a>
+            <form id="deleteForm" action="/api/restaurants/{{restaurant._id}}" method="POST" onsubmit="function () {
+                return confirm('Are you sure you want to proceed??')
+            }">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
             <a href="/api/restaurants" class="go-back-button">Go Back</a>
         </div>
     </div>
@@ -22,28 +27,33 @@
             <div class="info-item">
                 <div class="info-label">Address:</div>
                 <div class="info-value">
-                    {{restaurant.address.building}} {{restaurant.address.street}}, {{restaurant.borough}}, NY
+                    {{restaurant.address.building}}
+                    {{restaurant.address.street}},
+                    {{restaurant.borough}}, NY
                     {{restaurant.address.zipcode}}
                 </div>
             </div>
         </div>
 
-        <div class="grades">
-            <div class="grades-header">Grades</div>
-            {{#each restaurant.grades}}
-            <div class="grade-item">
-                <div class="grade-label">Grade:</div>
-                <div class="grade-value">{{this.grade}}</div>
+        <div class="reviews-section">
+            <h3 class="section-title">Customer Reviews</h3>
+            <div class="reviews-list">
+                {{#each restaurant.grades}}
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-label">Grade:</span>
+                        <span class="review-value">{{this.grade}}</span>
+                    </div>
+                    <div class="review-content">
+                        <p class="score-label">Score: {{this.score}}</p>
+                        <p class="date-label">Date: {{formatDate this.date}}</p>
+                    </div>
+                </div>
+                {{/each}}
             </div>
-            <div class="grade-item">
-                <div class="grade-label">Score:</div>
-                <div class="grade-value">{{this.score}}</div>
-            </div>
-            <div class="grade-item">
-                <div class="grade-label">Date:</div>
-                <div class="grade-value">{{formatDate this.date}}</div>
-            </div>
-            {{/each}}
+        </div>
+        <div class="action-buttons">
+            <a href="/logout" class="delete-button">Logout</a>
         </div>
     </div>
-    </div>
+</div>

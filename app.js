@@ -9,6 +9,7 @@ const {
   initializeRestaurantModel,
 } = require("./database/database");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 const app = express();
 
@@ -19,6 +20,9 @@ connectToDatabase()
     initializeRestaurantModel();
   })
   .catch((err) => console.log(err));
+
+// Use method-override middleware
+app.use(methodOverride('_method'));
 
 // All the middlewares
 app.use(helmet());

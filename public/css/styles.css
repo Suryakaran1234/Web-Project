@@ -19,6 +19,51 @@ h1 {
   padding: 1em;
 }
 
+/* Add this CSS in your stylesheet */
+
+.app-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.main-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-navigation li {
+  margin-right: 20px;
+}
+
+.main-navigation a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.user-actions a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.user-actions a:hover {
+  text-decoration: underline;
+}
+
 .form-container {
   margin-top: 1em;
 }
@@ -153,6 +198,69 @@ h1 {
   margin-left: 10px;
 }
 
+.reviews-section {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.reviews-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.review-item {
+  flex: 0 0 calc(33.33% - 20px);
+  /* Three items in a row initially */
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .review-item {
+    flex: 0 0 calc(50% - 20px);
+    /* Two items in a row on smaller screens */
+  }
+}
+
+.review-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+}
+
+.review-label {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #333;
+}
+
+.review-value {
+  color: #555;
+}
+
+.review-content {
+  margin-top: 8px;
+}
+
+.score-label,
+.date-label {
+  color: #777;
+  margin: 5px 0;
+}
+
+
 /* Style the scrollbar */
 /* Firefox */
 .restaurant-card {
@@ -212,4 +320,124 @@ a {
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
+}
+
+/* Add this CSS in your stylesheet */
+
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.grade-item {
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+a {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Pagination CSS */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 4px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
+
+.pagination .active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Add this CSS in your stylesheet */
+
+.app-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.footer-links li {
+    margin-right: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }

@@ -31,27 +31,34 @@
             </div>
         </div>
 
-        <div class="grades">
-            {{#each grades}}
-            <div class="grade-item">
-                <span class="grade-label">Grade:</span>
-                <span class="grade-value">{{this.grade}}</span>
+        <div class="reviews-section">
+            <h3 class="section-title">Customer Reviews</h3>
+            <div class="reviews-list">
+                {{#each grades}}
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="review-label">Grade:</span>
+                        <span class="review-value">{{this.grade}}</span>
+                    </div>
+                    <div class="review-content">
+                        <p class="score-label">Score: {{this.score}}</p>
+                        <p class="date-label">Date: {{formatDate this.date}}</p>
+                    </div>
+                </div>
+                {{/each}}
             </div>
-            <div class="grade-item">
-                <span class="grade-label">Score:</span>
-                <span class="grade-value">{{this.score}}</span>
-            </div>
-            <div class="grade-item">
-                <span class="grade-label">Date:</span>
-                <span class="grade-value">{{formatDate this.date}}</span>
-            </div>
-            {{/each}}
         </div>
+
 
         <div class="action-buttons">
             <a href="/api/restaurants/{{_id}}" class="action-button view-button">View</a>
-            <a href="/api/restaurants/{{_id}}" class="action-button edit-button">Edit</a>
-            <a href="/api/restaurants/{{_id}}" class="action-button delete-button">Delete</a>
+            <a href="/api/restaurants/edit/{{_id}}" class="action-button edit-button">Edit</a>
+            <form id="deleteForm" action="/api/restaurants/{{_id}}" method="POST" onsubmit="function () {
+                            return confirm('Are you sure you want to proceed??')
+                        }">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
         </div>
     </div>
 </div>

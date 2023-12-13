@@ -2,7 +2,7 @@
 {{!< layouts/main}} <h1>Create Restaurant</h1>
 
     <div class="form-container">
-        <form action="/api/restaurants" method="POST" class="form">
+        <form action="/api/restaurants/add" method="POST" class="form">
             <!-- Restaurant Name -->
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -27,9 +27,28 @@
             <label for="longitude">Longitude:</label>
             <input type="text" id="longitude" name="address.coord[0]" value="{{address.coord.[0]}}" readonly>
             <!-- Additional Fields (e.g., Grades, Date, Grade, Score) -->
-            
-            <button type="submit">Create Restaurant</button>
+            <div class="reviews-section">
+                <h3 class="section-title">Customer Reviews</h3>
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <label for="grade" class="review-label">Grade:</label>
+                            <input type="text" id="grade" name="grade" class="review-value" required>
+                        </div>
+                        <div class="review-content">
+                            <label for="score" class="score-label">Score:</label>
+                            <input type="text" id="score" name="score" required>
+                            <label for="date">Date:</label>
+                            <input type="text" id="date" name="date" class="date-label" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="edit-button">Create Restaurant</button>
+                <a href="/api/restaurants" class="view-button">Go Back</a>
+                <a href="/logout" class="delete-button">Logout</a>
+            </div>
         </form>
     </div>
-
-    <a href="/api/restaurants">Go Back</a>
