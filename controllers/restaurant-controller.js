@@ -69,10 +69,12 @@ async function getAllRestaurants(page, perPage, borough) {
 async function getRestaurantById(Id) {
   try {
     const restaurant = await Restaurant.findById(Id).lean();
+
     if (!restaurant) {
       console.log(`Restaurant with ID ${Id} not found`);
       return null;
     }
+
     console.log("Restaurant found by ID:", restaurant);
     return restaurant;
   } catch (error) {

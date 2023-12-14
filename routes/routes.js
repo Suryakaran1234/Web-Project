@@ -9,7 +9,6 @@ const {
   updateRestaurantById,
   deleteRestaurantById,
 } = require("../controllers/restaurant-controller");
-const { Restaurant } = require("../models/Restaurant");
 const { query, validationResult } = require("express-validator");
 
 router.get("/", authenticateUser, home);
